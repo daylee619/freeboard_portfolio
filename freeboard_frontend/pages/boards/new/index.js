@@ -21,6 +21,7 @@ import {
   Youtube,
   Zipcode,
   ZipcodeWrapper,
+  Error,
 } from "../../../styles/emotion";
 
 export default function BoardsNew() {
@@ -34,31 +35,49 @@ export default function BoardsNew() {
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
-    if (e.target.value !== "") {
+  const onChangeName = (event) => {
+    setName(event.target.value);
+    if (event.target.value !== "") {
       setNameError("");
     }
   };
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-    if (e.target.value !== "") {
-      setPasswordeError("");
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+    if (event.target.value !== "") {
+      setPasswordError("");
     }
   };
-  const onChangeTitle = (e) => {
-    setTitle(e.target.value);
-    if (e.target.value !== "") {
+  const onChangeTitle = (event) => {
+    setTitle(event.target.value);
+    if (event.target.value !== "") {
       setTitleError("");
     }
   };
-  const onChangeContents = (e) => {
-    setContents(e.target.value);
-    if (e.target.value !== "") {
+  const onChangeContents = (event) => {
+    setContents(event.target.value);
+    if (event.target.value !== "") {
       setContentsError("");
     }
   };
+  const onClickSubmit = () => {
+    if (!name) {
+      setNameError("작성자를 입력해주세요.");
+    }
+    if (!password) {
+      setPasswordError("비밀번호를 입력해주세요.");
+    }
+    if (!title) {
+      setTitleError("제목을 입력해주세요.");
+    }
+    if (!contents) {
+      setContentsError("내용을 입력해주세요.");
+    }
+    if (name && password && title && contents) {
+      alert("게시물이 등록되었습니다.");
+    }
+  };
+
   return (
     <Wrapper>
       <Title>게시판 등록</Title>
@@ -70,6 +89,8 @@ export default function BoardsNew() {
             placeholder="이름을 적어주세요."
             onChange={onChangeName}
           />
+
+          <Error>{nameError}</Error>
         </InputWrapper>
         <InputWrapper>
           <Label>비밀번호</Label>
@@ -78,6 +99,7 @@ export default function BoardsNew() {
             placeholder="비밀번호를 작성해주세요."
             onChange={onChangePassword}
           />
+          <Error>{passwordError}</Error>
         </InputWrapper>
       </WriterWrapper>
       <InputWrapper>
@@ -87,6 +109,7 @@ export default function BoardsNew() {
           placeholder="제목을 작성해주세요."
           onChange={onChangeTitle}
         />
+        <Error>{titleError}</Error>
       </InputWrapper>
       <InputWrapper>
         <Label>내용</Label>
@@ -94,6 +117,7 @@ export default function BoardsNew() {
           placeholder="내용을 작성해주세요."
           onChange={onChangeContents}
         />
+        <Error>{contentsError}</Error>
       </InputWrapper>
       <InputWrapper>
         <Label>주소</Label>
@@ -122,7 +146,7 @@ export default function BoardsNew() {
         <RadioLabel htmlFor="image">사진</RadioLabel>
       </OptionWrapper>
       <ButtonWrapper>
-        <SubmitButton>등록하기</SubmitButton>
+        <SubmitButton onClick={onClickSubmit}>등록하기</SubmitButton>
       </ButtonWrapper>
     </Wrapper>
   );

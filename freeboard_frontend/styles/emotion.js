@@ -21,7 +21,10 @@ export const Title = styled.div`
   font-size: 36px;
   font-weight: bold;
 `;
-
+export const Error = styled.p`
+  font-size: 12px;
+  color: red;
+`;
 export const WriterWrapper = styled.div`
   width: 100%;
   display: flex;
