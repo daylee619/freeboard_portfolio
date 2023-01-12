@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
+import { MouseEvent } from "react";
 import BoardCommentListUI from "./BoardCommentList.presenter";
 import {
   DELETE_BOARD_COMMENT,
@@ -15,13 +15,13 @@ export default function BoardCommentList() {
     variables: { boardId: router.query.boardId },
   });
 
-  const onClickDelete = async (event) => {
+  const onClickDelete = async (event: MouseEvent<HTMLImageElement>) => {
     const myPassword = prompt("비밀번호를 입력하세요.");
     try {
       await deleteBoardComment({
         variables: {
           password: myPassword,
-          boardCommentId: event.target.id,
+          boardCommentId: event.currentTarget.id,
         },
         refetchQueries: [
           {
@@ -31,7 +31,7 @@ export default function BoardCommentList() {
         ],
       });
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) alert(error.message);
     }
   };
 

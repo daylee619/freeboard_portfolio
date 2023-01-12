@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client";
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.queries";
@@ -13,13 +13,13 @@ export default function BoardCommentWrite() {
 
   const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
 
-  const onChangeWriter = (e) => {
+  const onChangeWriter = (e: ChangeEvent<HTMLInputElement>) => {
     setWriter(e.target.value);
   };
-  const onChangePassword = (e) => {
+  const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  const onChangeContents = (e) => {
+  const onChangeContents = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(e.target.value);
   };
 
@@ -43,7 +43,7 @@ export default function BoardCommentWrite() {
         ],
       });
     } catch (error) {
-      alert(error.message);
+      if (error instanceof Error) alert(error.message);
     }
   };
 

@@ -1,6 +1,6 @@
 import * as S from "./BoardCommentWrite.styles";
-
-export default function BoardCommentWriteUI(props) {
+import { BoardCommentWriteUIProps } from "./BoardCommentWrite.types";
+export default function BoardCommentWriteUI(props: BoardCommentWriteUIProps) {
   return (
     <S.Wrapper>
       <>
