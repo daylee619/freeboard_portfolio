@@ -8,7 +8,7 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
   return (
     <>
       {props.data?.fetchBoardComments.map((el) => (
-        <S.CommentListWrapper id={el.writer} onClick={qqq}>
+        <S.CommentListWrapper key={el._id}id={el.writer} onClick={qqq}>
           <S.FlexWrapper>
             <S.Profile src="/Vector (2).png" />
             <S.MainWrapper>

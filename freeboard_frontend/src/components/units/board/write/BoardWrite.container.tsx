@@ -3,7 +3,6 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
-import { IMutation } from "../../../../commons/types/generated/types";
 import { IUpdateBoardInput, IBoardWriteProps } from "./BoardWrite.types";
 
 export default function BoardWrite(props: IBoardWriteProps) {
@@ -121,10 +120,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
       const result = await updateBoard({
         variables: {
           boardId: router.query.boardId,
-          password: password,
+          password
           updateBoardInput: {
-            title: title,
-            contents: contents,
+            title,
+            contents
           },
         },
       });

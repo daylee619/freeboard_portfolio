@@ -1,4 +1,3 @@
-import exp from "constants";
 import { ChangeEvent } from "react";
 import { IQuery } from "../../../../commons/types/generated/types";
 
@@ -26,7 +25,7 @@ export interface IBoardWriteUIProps {
   onChangePassword: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (e: ChangeEvent<HTMLInputElement>) => void;
-  onClickSubmit: () => void;
+  onClickSubmit: () => void; // Promise<void>
   onClickUpdate: () => void;
   isEdit: boolean;
   data?: Pick<IQuery, "fetchBoard">;

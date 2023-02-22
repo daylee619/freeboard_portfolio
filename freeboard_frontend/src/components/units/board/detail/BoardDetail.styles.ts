@@ -61,6 +61,12 @@ export const Contents = styled.div`
   padding-bottom: 120px;
 `;
 
+export const Icons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
 export const BottomWrapper = styled.div`
   display: flex;
   flex-direction: row;

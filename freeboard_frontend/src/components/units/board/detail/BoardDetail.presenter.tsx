@@ -1,6 +1,8 @@
 import * as S from "./BoardDetail.styles";
 import { getDate } from "../../../../commons/utils/utils";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
+import { LikeTwoTone, DislikeTwoTone } from "@ant-design/icons";
+
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
     <S.Wrapper>
@@ -19,6 +21,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         <S.Body>
           <S.Title>{props.data?.fetchBoard?.title}</S.Title>
           <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
+          <S.Icons>
+            <LikeTwoTone />
+            <DislikeTwoTone />
+          </S.Icons>
         </S.Body>
       </S.CardWrapper>
       <S.BottomWrapper>

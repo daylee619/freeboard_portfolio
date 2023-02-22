@@ -3,7 +3,6 @@ import { useQuery } from "@apollo/client";
 
 import { FETCH_BOARD } from "./BoardDetail.queries";
 import BoardDetailUI from "./BoardDetail.presenter";
-import { IQuery } from "../../../../commons/types/generated/types";
 
 export default function BoardDetail() {
   const router = useRouter();
@@ -13,10 +12,10 @@ export default function BoardDetail() {
   });
 
   const onClickMoveToBoardList = () => {
-    router.push("/boards");
+    void router.push("/boards");
   };
   const onClickMoveToBoardEdit = () => {
-    router.push(`/boards/${router.query.boardId}/edit`);
+    void router.push(`/boards/${router.query.boardId}/edit`);
   };
   return (
     <>
