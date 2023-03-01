@@ -18,12 +18,14 @@
     "@next/font": "13.1.0",
     "antd": "^5.1.4",
     "axios": "^1.2.1",
+    "firebase": "^9.17.1",
     "graphql": "^16.6.0",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-daum-postcode": "^3.1.1",
     "react-dom": "17.0.2",
     "react-infinite-scroller": "^1.2.6",
+    "typeorm": "^0.3.12",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
