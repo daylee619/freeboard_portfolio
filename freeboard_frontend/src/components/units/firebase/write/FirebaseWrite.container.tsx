@@ -2,7 +2,7 @@ import { addDoc, collection, getFirestore } from "firebase/firestore/lite";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import FirebaseWriteUI from "./FirebaseWrite.presenter";
-import { firebaseApp } from "../../../../../pages/_app";
+import { firebaseApp } from "../../../../commons/libraries/firebase";
 
 export default function FirebaseWrite() {
   const router = useRouter();
