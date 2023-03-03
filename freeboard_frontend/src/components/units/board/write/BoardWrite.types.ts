@@ -9,6 +9,7 @@ export interface IBoardWriteProps {
 export interface IUpdateBoardInput {
   title?: string;
   contents?: string;
+  images?: string;
 }
 
 export interface ISubmitButtonProps {

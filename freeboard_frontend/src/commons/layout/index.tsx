@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutNavigation from "./navigation/LayoutNavigation.container";
+import React from "react";
 
 const Body = styled.div`
   height: 500px;

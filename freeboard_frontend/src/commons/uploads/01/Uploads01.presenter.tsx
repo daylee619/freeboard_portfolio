@@ -13,7 +13,7 @@ export default function Upload01UI(props: IUpload01UIProps) {
           onClick={props.onClickUpload}
         />
       ) : (
-        <UploadButton>
+        <UploadButton onClick={props.onClickUpload}>
           <>+</>
           <>upload</>
         </UploadButton>

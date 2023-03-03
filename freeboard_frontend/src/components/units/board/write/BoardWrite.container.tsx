@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
@@ -9,6 +9,7 @@ import {
   IMutationCreateBoardArgs,
   IMutationUpdateBoardArgs,
 } from "../../../../commons/types/generated/types";
+import { Modal } from "antd";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
@@ -91,6 +92,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
     setFileUrls(newFileUrl);
   };
 
+  useEffect(() => {
+    if (props.data?.fetchBoard.images?.length) {
+      setFileUrls([...props.data?.fetchBoard.images]);
+    }
+  }, [props.data]);
+
   const onClickSubmit = async () => {
     if (!writer) {
       setWriterError("작성자를 입력해주세요.");
@@ -121,13 +128,24 @@ export default function BoardWrite(props: IBoardWriteProps) {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         void router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
-        if (error instanceof Error) alert(error.message);
+        if (error instanceof Error) Modal.error({ content: error.message });
       }
     }
   };
 
   const onClickUpdate = async () => {
-    if (!title && !contents) {
+    const currentFiles = JSON.stringify(fileUrls);
+    const defaultFiles = JSON.stringify(props.data?.fetchBoard.images);
+    const isChangedFiles = currentFiles !== defaultFiles;
+    if (
+      !title &&
+      !contents &&
+      !youtubeUrl &&
+      !address &&
+      !addressDetail &&
+      !zipcode &&
+      !isChangedFiles
+    ) {
       alert("수정한 내용이 없습니다.");
       return;
     }
@@ -144,10 +162,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         variables: {
           boardId: router.query.boardId,
           password,
-          updateBoardInput: {
-            title,
-            contents,
-          },
+          updateBoardInput,
         },
       });
       void router.push(`/boards/${result.data?.updateBoard._id}`);
