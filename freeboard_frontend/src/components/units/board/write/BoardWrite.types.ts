@@ -25,8 +25,10 @@ export interface IBoardWriteUIProps {
   onChangePassword: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeTitle: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeContents: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeFileUrls: (fileUrls: string, index: number) => void;
   onClickSubmit: () => void; // Promise<void>
   onClickUpdate: () => void;
   isEdit: boolean;
   data?: Pick<IQuery, "fetchBoard">;
+  fileUrls: string[];
 }

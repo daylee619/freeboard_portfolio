@@ -65,7 +65,7 @@ export const Subject = styled.input`
   border: 1px solid #bdbdbd;
 `;
 
-export const Contents = styled.textarea`
+export const Contents = styled.input`
   width: 996px;
   height: 480px;
   padding-left: 16px;

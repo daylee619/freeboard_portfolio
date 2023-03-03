@@ -14,6 +14,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
+  const [youtubeUrl, setYoutubeUrl] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+
   const [writerError, setWriterError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [titleError, setTitleError] = useState("");
@@ -148,6 +154,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         isEdit={props.isEdit}
         isActive={isActive}
         data={props.data}
+        fileUrls={fileUrls}
       />
     </>
   );
