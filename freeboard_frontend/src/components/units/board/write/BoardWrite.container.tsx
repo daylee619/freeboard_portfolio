@@ -4,6 +4,11 @@ import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 import { IUpdateBoardInput, IBoardWriteProps } from "./BoardWrite.types";
+import {
+  IMutation,
+  IMutationCreateBoardArgs,
+  IMutationUpdateBoardArgs,
+} from "../../../../commons/types/generated/types";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
@@ -13,7 +18,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
-
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
@@ -25,8 +29,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
 
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [createBoard] = useMutation<
+    Pick<IMutation, "createBoard">,
+    IMutationCreateBoardArgs
+  >(CREATE_BOARD);
+  const [updateBoard] = useMutation<
+    Pick<IMutation, "updateBoard">,
+    IMutationUpdateBoardArgs
+  >(UPDATE_BOARD);
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -75,6 +85,11 @@ export default function BoardWrite(props: IBoardWriteProps) {
       setIsActive(false);
     }
   };
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrl = [...fileUrls];
+    newFileUrl[index] = fileUrl;
+    setFileUrls(newFileUrl);
+  };
 
   const onClickSubmit = async () => {
     if (!writer) {
@@ -98,11 +113,13 @@ export default function BoardWrite(props: IBoardWriteProps) {
               password,
               title,
               contents,
+              images: [...fileUrls],
             },
           },
         });
 
-        router.push(`/boards/${result.data.createBoard._id}`);
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        void router.push(`/boards/${result.data?.createBoard._id}`);
       } catch (error) {
         if (error instanceof Error) alert(error.message);
       }
@@ -126,14 +143,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
       const result = await updateBoard({
         variables: {
           boardId: router.query.boardId,
-          password
+          password,
           updateBoardInput: {
             title,
-            contents
+            contents,
           },
         },
       });
-      router.push(`/boards/${result.data?.updateBoard._id}`);
+      void router.push(`/boards/${result.data?.updateBoard._id}`);
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -149,6 +166,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         onChangePassword={onChangePassword}
         onChangeTitle={onChangeTitle}
         onChangeContents={onChangeContents}
+        onChangeFileUrls={onChangeFileUrls}
         onClickSubmit={onClickSubmit}
         onClickUpdate={onClickUpdate}
         isEdit={props.isEdit}
