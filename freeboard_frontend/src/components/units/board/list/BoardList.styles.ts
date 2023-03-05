@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { ITextTokenProps } from "./BoardList.types";
+
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 100px;
@@ -22,7 +24,7 @@ export const ColumnTitle = styled.div`
   width: 70%;
   text-align: center;
 `;
-export const ColumnContents = styled.div`
+export const ColumnBasic = styled.div`
   width: 10%;
   text-align: center;
 `;
@@ -63,4 +65,11 @@ export const Button = styled.button`
   align-items: center;
   cursor: pointer;
   color: black;
+
+  :hover {
+    background-color: #f5f2fc;
+  }
+`;
+export const TextToken = styled.span`
+  color: ${(props: ITextTokenProps) => (props.isMatched ? "red" : "black")};
 `;
