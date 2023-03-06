@@ -10,7 +10,6 @@ export default function Searchbar01UI(props: ISearchbar01UIProps) {
     <Searchbar>
       <FireFilledIcon />
       <SearchbarInput
-        type="text"
         onChange={props.onChangeSearchbar}
         placeholder="검색어를 입력해주세요"
       />

@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { ChangeEvent } from "react";
 import Searchbar01UI from "./Searchbar01.presenter";
 import { ISearchbar01Props } from "./Searchbar01.types";
 export default function Searchbar01(props: ISearchbar01Props) {
@@ -8,7 +9,7 @@ export default function Searchbar01(props: ISearchbar01Props) {
     props.onChangeKeyword(value);
   }, 1000);
 
-  const onChangeSearchbar = (e) => {
+  const onChangeSearchbar = (e: ChangeEvent<HTMLInputElement>) => {
     getDebounce(e.target.value);
   };
   return <Searchbar01UI onChangeSearchbar={onChangeSearchbar} />;

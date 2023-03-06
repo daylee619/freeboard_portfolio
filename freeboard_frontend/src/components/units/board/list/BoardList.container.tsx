@@ -6,6 +6,7 @@ import { MouseEvent, useState } from "react";
 import {
   IQuery,
   IQueryFetchBoardArgs,
+  IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";
 
@@ -15,7 +16,7 @@ export default function BoardList() {
 
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
-    IQueryFetchBoardArgs
+    IQueryFetchBoardsArgs
   >(FETCH_BOARDS);
 
   const { data: dataBoardsCount, refetch: refetchBoardsCount } = useQuery<
