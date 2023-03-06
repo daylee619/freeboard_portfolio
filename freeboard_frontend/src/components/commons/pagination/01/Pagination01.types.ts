@@ -3,7 +3,7 @@ import { MouseEvent } from "react";
 import {
   IQuery,
   IQueryFetchBoardsArgs,
-} from "../../../commons/types/generated/types";
+} from "../../../../commons/types/generated/types";
 
 export interface IPagination01Props {
   count?: number;

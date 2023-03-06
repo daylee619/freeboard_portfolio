@@ -1,8 +1,8 @@
 import * as S from "./BoardList.styles";
 import { getDate } from "../../../../commons/utils/utils";
 import { IBoardListUIProps } from "./BoardList.types";
-import Paginations01 from "../../../../commons/pagination/01/Pagination01.container";
-import Searchbar01 from "../../../../commons/searchbar/01/Searchbar01.container";
+import Paginations01 from "../../../commons/pagination/01/Pagination01.container";
+import Searchbar01 from "../../../commons/searchbar/01/Searchbar01.container";
 import { uuidv4 } from "@firebase/util";
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
