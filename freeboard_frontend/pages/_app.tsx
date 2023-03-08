@@ -1,9 +1,9 @@
 // import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { AppProps } from "next/app";
-import ApolloSetting from "../src/commons/apollo";
+import ApolloSetting from "../src/components/commons/apollo";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
-import Layout from "../src/commons/layout";
+import Layout from "../src/components/commons/layout";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (

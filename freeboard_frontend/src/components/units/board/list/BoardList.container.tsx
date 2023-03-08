@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 import {
   IQuery,
-  IQueryFetchBoardArgs,
   IQueryFetchBoardsArgs,
   IQueryFetchBoardsCountArgs,
 } from "../../../../commons/types/generated/types";

@@ -1,4 +1,4 @@
-import Upload01 from "../../../../commons/uploads/01/Uploads01.container";
+import Upload01 from "../../../commons/uploads/01/Uploads01.container";
 import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
 import { v4 as uuidv4 } from "uuid";
