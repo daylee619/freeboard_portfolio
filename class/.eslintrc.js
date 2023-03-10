@@ -19,5 +19,6 @@ module.exports = {
     "@typescript-eslint/triple-slash-reference": "off",
     "react/display-name": "off",
     "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
   },
 };
